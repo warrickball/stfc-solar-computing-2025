@@ -103,6 +103,9 @@ with their own domain-specific libraries.
 The number of packages grows as we move further from the core packages above
 but here are a few packages you might encounter.
 
+- [**Cartopy**](https://scitools.org.uk/cartopy/) supplements Matplotlib to help you
+  plot maps.
+
 - [**Astropy**](https://www.astropy.org/) is the result of a big community effort
   to recreate common core tools for astronomy in Python.
   There is a core `astropy` module as well as a small ecosystem of affiliated packages.
@@ -121,15 +124,21 @@ Python doesn't offer a built-in object in which we can operate on multiple eleme
 Instead, we might explicitly loop over the elements of an iterable, like a list.
 
 ```python
->>> x = list(range(10))
->>> y = x**2
+x = list(range(10))
+y = x**2
+```
+```output
 Traceback (most recent call last):
   File "<python-input-1>", line 1, in <module>
     y = x**2
         ~^^~
 TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'int'
->>> y = [xi**2 for xi in x]
->>> print(y)
+```
+```python
+y = [xi**2 for xi in x]
+print(y)
+```
+```output
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 It turns out that for specific reasons about how Python works as a language,
@@ -137,10 +146,12 @@ this is much slower than lower-level, compiled languages like C or Fortran.
 
 With NumPy arrays, we *can* manipulate all the values at once.
 ```python
->>> import numpy as np
->>> x = np.arange(10)
->>> y = x**2
->>> print(y)
+import numpy as np  # this is canonical
+x = np.arange(10)
+y = x**2
+print(y)
+```
+```output
 [ 0  1  4  9 16 25 36 49 64 81]
 ```
 Rewriting an operation to use the whole array at once is called *vectorisation*.
@@ -152,9 +163,11 @@ vectorisation closes a lot of the gap and we get to retain the high-level interf
 You might occasionally encounter something that doesn't handle NumPy arrays.
 `math.sin` for example raises an error:
 ```python
->>> x = np.linspace(0, 2*np.pi, 10)
->>> import math as m
->>> y = m.sin(x)
+x = np.linspace(0, 2*np.pi, 10)
+import math as m
+y = m.sin(x)
+```
+```output
 Traceback (most recent call last):
   File "<python-input-13>", line 1, in <module>
     y = m.sin(x)
@@ -162,8 +175,10 @@ TypeError: only length-1 arrays can be converted to Python scalars
 ```
 so we use `numpy.sin` instead.
 ```python
->>> y = np.sin(x)
->>> print(y)
+y = np.sin(x)
+print(y)
+```
+```output
 [ 0.00000000e+00  6.42787610e-01  9.84807753e-01  8.66025404e-01
   3.42020143e-01 -3.42020143e-01 -8.66025404e-01 -9.84807753e-01
  -6.42787610e-01 -2.44929360e-16]
@@ -175,12 +190,96 @@ Try to manipulate whole arrays at once.
 
 ### Broadcasting
 
+NumPy arrays all have a *shape*, the number of elements in each dimensions.
+```python
+x = np.arange(6)
+print(x)
+print(x.shape)
+y = x.reshape((2,3))
+print(y)
+print(y.shape)
+```
 
+```output
+[0 1 2 3 4 5]
+(6,)
+[[0 1 2]
+ [3 4 5]]
+(2, 3)
+```
+
+NumPy will usually try to sensibly combine dimensions.  E.g.
+```python
+print(x-2)
+```
+```output
+[-2 -1  0  1  2  3]
+```
+works even though 2 is not an array.  If shapes are incompatible, you'll get errors:
+```python
+a = np.arange(2)
+b = np.arange(3)
+print(a + b)
+```
+```output
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[20], line 1
+----> 1 print(a + b)
+
+ValueError: operands could not be broadcast together with shapes (2,) (3,)
+```
+If the shapes can be expanded sensibly, NumPy does so.
+This is called *broadcasting*.
+```python
+c = a.reshape(2,1)
+d = b.reshape(1,3)
+print(c)
+print(d)
+print(c+d)
+```
+```output
+[[0]
+ [1]]
+[[0 1 2]]
+[[0 1 2]
+ [1 2 3]]
+```
+You can pass `-1` as one argument of `reshape`, which will take on whichever value makes sense.
+You can also slice with `np.newaxis` or `None` to create additional dimensions.
+
+Mind you don't run out of memory, though.
+```python
+z = np.arange(100_000)
+print(z[:,None] + z[None,:])
+```
+```output
+---------------------------------------------------------------------------
+MemoryError                               Traceback (most recent call last)
+Cell In[27], line 1
+----> 1 print(x[:,None] + x[None,:])
+
+MemoryError: Unable to allocate 74.5 GiB for an array with shape (100000, 100000) and data type int64
+```
+
+:::::::::::::: challenge
+
+Compute $\sin(x)$ on $[0,2\pi]$, estimate the derivative using finite differences
+and compare those to the analytic derivative.
+
+Start off with
+```python
+x = np.linspace(0, 2*np.pi, 101)
+y = np.sin(x)
+# ...
+```
+
+::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::: keypoints
 
 - The main libraries in the scientific stack are NumPy, SciPy, Matplotlib and Pandas.
-- There are many more domain-specific libraries. e.g. Astropy, SunPy and PlasmaPy.
+- There are many more domain-specific libraries. e.g. Cartopy, Astropy, SunPy and PlasmaPy.
   Their quality and level of support can vary widely.
   Activity in the source repo is a useful proxy for whether a project is maintained.
 - NumPy provides an array object that other libraries use in their objects (e.g. Pandas' `DataFrame`s).

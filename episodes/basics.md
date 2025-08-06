@@ -21,6 +21,8 @@ exercises: 10
 
 ## Basic data types
 
+Python has the following core types of data.
+
 * *Booleans*, which are either `True` or `False`.
 
 * *Integers*, or `int`s, like -1 or 233.
@@ -31,7 +33,7 @@ exercises: 10
 
 * *None*, a special type that usually represents no value, e.g. if a function returns nothing.
 
-Assign to variables with `=`.
+We assign values to variables with `=`.
 
 ## Basic operations
 
@@ -40,7 +42,7 @@ There are more but we aren't going to worry about them now.
 
 These should work roughly as you expect.  Python will convert sensibly.
 Note in particular that division of two integers produces a float.
-There is also the *floor divison* operator `//`, which is like Python 2 integer division and returns an integer.
+There is also the *floor division* operator `//`, which is like Python 2 integer division and returns an integer.
 
 ```python
 print(5/3, 5//3)
@@ -49,6 +51,8 @@ print(5/3, 5//3)
 ```output
 1.6666666666666667 1
 ```
+
+The basic logical operations are `<`, `<=`, `>`, `>=`, `==` and `!=`.
 
 ## Lists and tuples
 
