@@ -1,22 +1,22 @@
 ---
-title: "Exploring the WSA ENLIL data"
+title: "Exploring the WSA Enlil data"
 teaching: 10
 exercises: 5
 ---
 
-:::::::::::::::::::::::::::::::::: questions
+:::::::::::::::::::::::::::::::::::::::: questions
 
 - What are some main formats for sharing data?
 - How do I explore a given data set?
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::: objectives
+::::::::::::::::::::::::::::::::::::::: objectives
 
 - Know which libraries are suitable for some common data types.
 - Practice exploring a dataset.
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Common data formats
 
@@ -40,9 +40,9 @@ rather than writing them out as text.  Some common formats for this are:
   is (still!) widely used for astronomical images.  You can handle these files using
   [Astropy's FITS module](https://docs.astropy.org/en/latest/io/fits/index.html).
 
-## Exploring the WSA ENLIL file
+## Exploring the WSA Enlil file
 
-We're going to work with data from the WSA ENLIL solar wind model provided by the SWPC
+We're going to work with data from the WSA Enlil solar wind model provided by the SWPC
 [WSA Enlil Solar Wind dashboard](https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction).
 Under the main plot, you should see a set of tabs, of which the fifth is "Data".
 Click on that and then follow the link to the
@@ -116,7 +116,7 @@ Dimensions without coordinates: earth_t
 ```
 
 NetCDF4 and `xarray.Dataset` objects support named co-ordinates
-but they're recorded as data variables in our WSA-ENLIL data.
+but they're recorded as data variables in our WSA-Enlil data.
 ```python
 print(ds['coords'])
 ```
@@ -126,34 +126,61 @@ Coordinates:
     *empty*
 ```
 
-::::::::::::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
-Let's start making sense of the WSA ENLIL data.
+Let's start making sense of the WSA Enlil data.
 
-- What are the values of the radial velocity time series, e.g. `'STEREO_A_V1'`?
-- What are the co-ordinates in `{x,y,z}_coord`?
-- What do the `{1,2,3}` indices of the `_3d` data variables mean?
-- What are units of these fields?
+1. What are the values of the radial velocity time series, e.g. `'STEREO_A_V1'`?
+2. What are the co-ordinates in `{x,y,z}_coord`?
+3. What do the `{1,2,3}` indices of the `vv12_3d` data variable mean?
+4. What are units of these fields?
 
-::::::::::::::::::::::::::::::::::::::::
+Note that none of the answers are particularly easy to find!
+It's good practice to embed such metadata in the file but happens to not be the case here.
+You can find some of answers by looking at the dimensions associated with each data variable
+and by comparing with the actual SWPC WSA-Enlil dashboard.
 
-::::::::::::::::::::::::: solution
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-- These appear to be in metres per second.  Densities are in kilograms per cubic metre.
+::::::::::::::::::::::::::::::::::::::::: solution
 
-- `x`, `y` and `z` correspond to the radial distance from the Sun $r$,
-  a heliocentric latitude $\theta$ and
-  a heliocentric longitude $\phi$.
+1. You can see the values with `print(ds['STEREO_A_V1'])`.
+   They should mostly be between about 200,000 and 800,000.
 
-- These are the co-ordinates $r$, $\theta$ and $\phi$.
-  Variables ending `_12` are slices that depend on $r$ and $\theta$, and so on.
+2. `x`, `y` and `z` correspond to the radial distance from the Sun $r$,
+   a heliocentric latitude $\theta$ and
+   a heliocentric longitude $\phi$.
 
-- They are stored as 16-bit signed integers, so range from -32767 to 32768.
-  Each variable has attributes `'..._min'` and `'..._max'`
-  that specifies the physical range.
-  `dd` and `vv` are density and radial velocity in the same units as the time series.
+3. These indicate which of $r$, $\theta$ and $\phi$ the data variable depends on.
+   E.g. `vv12_3d` depends on $r$ and $\theta$, so is a meridional slice.
 
-:::::::::::::::::::::::::::::
+4. The raw data is stored  as 16-bit signed integers, so range from -32767 to 32768.
+   Each variable has attributes `'..._min'` and `'..._max'` that specifies the physical range.
+   The data is mostly between about 300,000 and 700,000.
+   From the SWPC dashboard, we can see the actual solar wind typically has velocities around 300 to 700 km/s,
+   so the data is presumably in m/s.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+The units of the density variables is much more difficult to infer,
+so to save some time I'll just tell you what it is.
+Part of this is based on a difficult to find [data note](https://www.ngdc.noaa.gov/stp/enlil/data_note.html)
+that links to a plotting script writting in the [Interactive Data Language](https://en.wikipedia.org/wiki/IDL_(programming_language) (IDL), which I used to get some of this information.
+
+In short, the density in the data files is a *mass* (rather than *number*) density in kg/m³.
+The plots are of *number* density in 1/cm³ and mass is converted to number by dividing my the mass of a proton.
+So, for example, the number density at Earth is
+```python
+proton_mass = 1.6726e-27
+number_density = ds['Earth_Density']/proton_mass/1e6
+print(number_density)
+```
+```output
+<xarray.DataArray 'Earth_Density' (earth_t: 13166)> Size: 53kB
+array([4.512042 , 4.5120525, 4.5120625, ..., 4.178782 , 4.1735234,
+       4.1680775], dtype=float32)
+Dimensions without coordinates: earth_t
+```
 
 ## Broadcasting, selecting and slicing Xarray datasets
 
@@ -238,7 +265,7 @@ and we can use `None` where we would have blanks.
 print(ds['dd13_3d'].isel(t=slice(None,5)))
 ```
 
-::::::::::::::::::::::::::::::::: keypoints
+:::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Some common binary (not plain-text) formats for numerical data are HDF5, netcdf4 and FITS.
 - The corresponding lowest-level Python libraries are h5py, netCDF4 and Astropy.
@@ -246,4 +273,4 @@ print(ds['dd13_3d'].isel(t=slice(None,5)))
 - All formats support metadata in attributes that is worth looking for.
 - Add useful metadata to your own data!
 
-:::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::

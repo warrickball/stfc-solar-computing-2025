@@ -4,20 +4,20 @@ teaching: 20
 exercises: 10
 ---
 
-:::::::::::::::::::::::::::::::::: questions
+:::::::::::::::::::::::::::::::::::::::: questions
 
 - What are Python's fundamental types?
 - What basic operations does Python implement?
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::: objectives
+::::::::::::::::::::::::::::::::::::::: objectives
 
 - Know Python's basic data types and operations.
 - Understand accessing elements by index or key.
 - Know about mutability and how it can lead to unexpected behaviour.
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Basic data types
 
@@ -118,7 +118,7 @@ print(my_list[1:4:2])
 
 `start` defaults to 0, `stop` to the length of the list, and `step` to 1.
 
-:::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 Some fundamental operations work with lists.
 Guess what the following expressions will produce before running them.
@@ -127,9 +127,9 @@ Guess what the following expressions will produce before running them.
 2. `['a', 'b', 'c']*3`
 3. `[0, 1, 2] + 3`
 
-:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 What is the output of the following sequence of Python statements?
 
@@ -140,15 +140,15 @@ a.append(15)
 print(b)
 ```
 
-::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::: solution
+::::::::::::::::::::::::::::::::::::::::: solution
 
 [0, 5, 10, 15]
 
-::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::::::: callout
 
 The challenge above is a demonstration of *mutability*:
 the ability to modify a variable *in place*.
@@ -159,7 +159,7 @@ Tuples are a lot like lists but immutable.  You can declare them with `(...)`.
 
 Strings are a bit like tuples of characters but with a lot of functions.
 
-:::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Dictionaries
 
@@ -226,7 +226,7 @@ None
 [0, 'a', True, 1.0, 25]
 ```
 
-::::::::::::::::::::::::::::::::: keypoints
+:::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Python's basic types are `bool`s, `int`s, `float`s and `str`s.
 - `None` is a special type that represents the absence of a value.
@@ -234,4 +234,4 @@ None
 - Dictionaries (`dict`s) are mutable collections that can be accessed by a key, which is usually a string.
 - Functions may take positional arguments or keyword arguments.
 
-:::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::

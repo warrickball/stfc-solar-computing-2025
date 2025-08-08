@@ -4,17 +4,17 @@ teaching: 10
 exercises: 5
 ---
 
-:::::::::::::::::::::::::::::::::: questions
+:::::::::::::::::::::::::::::::::::::::: questions
 
 - How do I make simple plots with Matplotlib?
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::: objectives
+::::::::::::::::::::::::::::::::::::::: objectives
 
 - Know that Matplotlib has a functional and an object-oriented API.
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Functional API
 
@@ -69,15 +69,15 @@ plt.plot(ds['Earth_TIME'], ds['Earth_Density']/1.672e-27/1e6)
 
 where I've borrowed the units from an IDL script I found.
 
-:::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 Plot separately the plasma density at STEREO A,
 the radial velocity at Earth
 and the radial velocity at STEREO A.
 
-::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::: solution
+::::::::::::::::::::::::::::::::::::::::: solution
 
 For example,
 ```python
@@ -87,7 +87,7 @@ plt.plot(time, ds[Earth_V1]/1000)
 plt.plot(time, ds['STEREO_A_V1]/1000)
 ```
 
-::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## How do I make my favourite kind of plot?
 
@@ -96,11 +96,11 @@ and [examples](https://matplotlib.org/stable/gallery/index.html)
 with the code provided alongside the plot.
 This is an excellent place for finding out how to embellish plots or use particular features.
 
-::::::::::::::::::::::::::::::::: keypoints
+:::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Matplotlib is a widely used plotting package.
 - The *functional* API allows for rapid, common plots.
 - The *object-oriented* API allows much finer control over a plot's appearance.
 - Use the gallery of examples to find features you may wish to use.
 
-:::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
