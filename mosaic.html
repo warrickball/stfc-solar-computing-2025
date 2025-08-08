@@ -224,7 +224,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="data.html">3. Exploring the WSA ENLIL data</a>
+        <a href="data.html">3. Exploring the WSA Enlil data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -326,7 +326,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Putting it all together with <code>subplot_mosaic</code></h1>
-        <p>Last updated on 2025-08-06 |
+        <p>Last updated on 2025-08-08 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/mosaic.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -387,17 +387,18 @@ quite often accessible via your code editor.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
+<span class="callout-header">Discussion</span>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<ul><li><p>Look up the <code>subplot_mosaic</code> function in the <a href="https://matplotlib.org/stable/api/index" class="external-link">Matplotlib API
+<ol style="list-style-type: decimal"><li><p>Look up the <code>subplot_mosaic</code> function in the <a href="https://matplotlib.org/stable/api/index" class="external-link">Matplotlib API
 documentation</a> and devise a value of the first argument to get the
 shape of the SWPC dashboard.</p></li>
 <li><p>Add one of the line plots.</p></li>
 <li><p>Find the keyword argument that will apply a polar projection to
 some, but not all, of the plots.</p></li>
 <li><p>Add one of the 2D data plots.</p></li>
-</ul></div>
+</ol></div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -407,8 +408,8 @@ some, but not all, of the plots.</p></li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<ul><li>There are multiple solutions here but I would use</li>
-</ul><div class="codewrapper sourceCode" id="cb1">
+<ol style="list-style-type: decimal"><li>There are multiple solutions here but I would use</li>
+</ol><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplot_mosaic(</span>
@@ -420,14 +421,14 @@ some, but not all, of the plots.</p></li>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="st">    """</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>)</span></code></pre>
 </div>
-<ul><li>This would work for the top right plot:</li>
-</ul><div class="codewrapper sourceCode" id="cb2">
+<ol start="2" style="list-style-type: decimal"><li>This would work for the top right plot:</li>
+</ol><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>axs[<span class="st">'E'</span>].plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
 </div>
-<ul><li>You’ll probably need to <code>per_subplot_kw</code> argument:</li>
-</ul><div class="codewrapper sourceCode" id="cb3">
+<ol start="3" style="list-style-type: decimal"><li>You’ll probably need to <code>per_subplot_kw</code> argument:</li>
+</ol><div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplot_mosaic(</span>
@@ -440,8 +441,8 @@ some, but not all, of the plots.</p></li>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>    }</span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>)</span></code></pre>
 </div>
-<ul><li>
-</li></ul><div class="codewrapper sourceCode" id="cb4">
+<ol start="4" style="list-style-type: decimal"><li>
+</li></ol><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>axs[<span class="st">'B'</span>].pcolormesh(ds[<span class="st">'z_coord'</span>], ds[<span class="st">'x_coord'</span>], ds[<span class="st">'vv13_3d'</span>].isel(t<span class="op">=</span><span class="dv">0</span>).T)</span></code></pre>
@@ -462,8 +463,8 @@ practice though we don’t have time to delve too deeply into it now.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
+<span class="callout-header">Key Points</span>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>High-quality libraries will have API documentation that describes
 everything you can use in your own code.</li>
@@ -514,7 +515,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.12" class="external-link">sandpaper (0.16.12)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.6" class="external-link">varnish (1.0.6)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.17.1" class="external-link">sandpaper (0.17.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.7" class="external-link">varnish (1.0.7)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -536,8 +537,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/mosaic.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/mosaic.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-06",
-  "datePublished": "2025-08-06"
+  "dateModified": "2025-08-08",
+  "datePublished": "2025-08-08"
 }
 
   </script><script>
