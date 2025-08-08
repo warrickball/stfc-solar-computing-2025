@@ -4,22 +4,22 @@ teaching: 10
 exercises: 5
 ---
 
-:::::::::::::::::::::::::::::::::: questions
+:::::::::::::::::::::::::::::::::::::::: questions
 
 - What are Python packages?
 - Where do I find them?
 - How do I know which are reliable?
 - Which are the main libraries used for scientific research?
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::: objectives
+::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand Python packages and know some places to find them.
 - Know some ways of deciding if a library is reliable.
 - Learn the main advantages of array-like objects, including NumPy arrays.
 
-::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 One of Python's biggest strengths is its rich ecosystem of packages.
 The downside is that the user sometimes needs to take care to avoid
@@ -64,7 +64,7 @@ at if there have been recent releases.  If there's a link to an issue tracker
 (often part of a repository host like GitHub), you can also see if issues are
 being responded to or contributions incorporated.
 
-::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 Navigate to PyPI and search for packages using some keywords of your choice
 (e.g. "solar physics".
@@ -72,7 +72,7 @@ What projects turn up?
 Do any look interesting?
 Are they maintained?
 
-::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## The scientific stack
 
@@ -262,7 +262,7 @@ Cell In[27], line 1
 MemoryError: Unable to allocate 74.5 GiB for an array with shape (100000, 100000) and data type int64
 ```
 
-:::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::: challenge
 
 Compute $\sin(x)$ on $[0,2\pi]$, estimate the derivative using finite differences
 and compare those to the analytic derivative.
@@ -274,9 +274,40 @@ y = np.sin(x)
 # ...
 ```
 
-::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::: keypoints
+::::::::::::::::::::::::::::::::::::::::: solution
+
+You can estimate the derivative with forward (or backward, which is similar) differences,
+```python
+x = np.linspace(0, 2*np.pi, 101)
+y = np.sin(x)
+dy_dx = (y[1:]-y[:-1])/(x[1]-x[0])
+```
+or central differences,
+```python
+x = np.linspace(0, 2*np.pi, 101)
+y = np.sin(x)
+dy_dx = (y[2:]-y[:-2])/(x[2:]-x[:-2])
+```
+Taking care to compare the appropriate indices, we can try comparing the appropriate values. 
+E.g., for the fractional error in central differences,
+```python
+print(dy_dx-np.cos(x[1:-1]))
+```
+```
+[-6.56545656e-04 -6.52656466e-04 -6.46191539e-04 -6.37176389e-04
+ -6.25646595e-04 -6.11647660e-04 -5.95234830e-04 -5.76472881e-04
+ -5.55435857e-04 -5.32206782e-04 -5.06877329e-04 -4.79547463e-04
+ ...
+ -5.06877329e-04 -5.32206782e-04 -5.55435857e-04 -5.76472881e-04
+ -5.95234830e-04 -6.11647660e-04 -6.25646595e-04 -6.37176389e-04
+ -6.46191539e-04 -6.52656466e-04 -6.56545656e-04]
+ ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
 
 - The main libraries in the scientific stack are NumPy, SciPy, Matplotlib and Pandas.
 - There are many more domain-specific libraries. e.g. Cartopy, Astropy, SunPy and PlasmaPy.
@@ -286,4 +317,4 @@ y = np.sin(x)
   Manipulating these objects directly is much faster than looping over elements of a list or other collection.
 - NumPy will combine the dimensions of arrays conveniently by *broadcasting*.
 
-:::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
