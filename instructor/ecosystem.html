@@ -330,7 +330,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>The Python ecosystem</h1>
-        <p>Last updated on 2025-08-08 |
+        <p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/ecosystem.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -421,7 +421,7 @@ contributions incorporated.</p>
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Navigate to PyPI and search for packages using some keywords of your
-choice (e.g. “solar physics”. What projects turn up? Do any look
+choice (e.g. “solar physics”). What projects turn up? Do any look
 interesting? Are they maintained?</p>
 </div>
 </div>
@@ -677,7 +677,7 @@ finite differences and compare those to the analytic derivative.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can estimate the derivative with forward (or backward, which is
 similar) differences,</p>
@@ -702,7 +702,7 @@ differences,</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="bu">print</span>(dy_dx<span class="op">-</span>np.cos(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="bu">print</span>(dy_dx <span class="op">-</span> np.cos(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre>
 </div>
 <pre><code>[-6.56545656e-04 -6.52656466e-04 -6.46191539e-04 -6.37176389e-04
  -6.25646595e-04 -6.11647660e-04 -5.95234830e-04 -5.76472881e-04
@@ -800,8 +800,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/ecosystem.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/ecosystem.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-08",
-  "datePublished": "2025-08-08"
+  "dateModified": "2025-08-12",
+  "datePublished": "2025-08-12"
 }
 
   </script><script>

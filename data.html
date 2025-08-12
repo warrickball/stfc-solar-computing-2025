@@ -328,7 +328,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring the WSA Enlil data</h1>
-        <p>Last updated on 2025-08-08 |
+        <p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -507,7 +507,7 @@ WSA-Enlil dashboard.</p>
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>You can see the values with
 <code>print(ds['STEREO_A_V1'])</code>. They should mostly be between
-about 200,000 and 800,000.</p></li>
+about 300,000 and 700,000.</p></li>
 <li><p><code>x</code>, <code>y</code> and <code>z</code> correspond to
 the radial distance from the Sun <span class="math inline">\(r\)</span>,
 a heliocentric latitude <span class="math inline">\(\theta\)</span> and
@@ -530,12 +530,12 @@ km/s, so the data is presumably in m/s.</p></li>
 <p>The units of the density variables is much more difficult to infer,
 so to save some time I’ll just tell you what it is. Part of this is
 based on a difficult to find <a href="https://www.ngdc.noaa.gov/stp/enlil/data_note.html" class="external-link">data note</a>
-that links to a plotting script writting in the [Interactive Data
-Language](<a href="https://en.wikipedia.org/wiki/IDL_(programming_language)" class="external-link uri">https://en.wikipedia.org/wiki/IDL_(programming_language)</a>
-(IDL), which I used to get some of this information.</p>
-<p>In short, the density in the data files is a <em>mass</em> (rather
-than <em>number</em>) density in kg/m³. The plots are of <em>number</em>
-density in 1/cm³ and mass is converted to number by dividing my the mass
+that links to a plotting script written in the <a href="https://en.wikipedia.org/wiki/IDL_(programming_language)" class="external-link">Interactive
+Data Language</a> (IDL), which I used to get some of this
+information.</p>
+<p>The density in the data files is a <em>mass</em> (rather than
+<em>number</em>) density in kg/m³. The plots are of <em>number</em>
+density in 1/cm³ and mass is converted to number by dividing by the mass
 of a proton. So, for example, the number density at Earth is</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -603,8 +603,8 @@ array([[[-3.15502734e+24, -3.54123933e+24, -3.84827011e+24, ...,
          -2.11272021e+27, -2.11388221e+27, -2.11433408e+27]]],
       dtype=float32)
 Dimensions without coordinates: x, t, z</code></pre>
-<p>so we don’t have to do as much manual broadcasting trickery if the
-coordinates are well defined.</p>
+<p>so we don’t have to do as much manual broadcasting if the coordinates
+are well defined.</p>
 <p>We can select axis by axis using NumPy syntax or we can select axes
 explicitly with <code>Dataset.isel</code>.</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -714,8 +714,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/data.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/data.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-08",
-  "datePublished": "2025-08-08"
+  "dateModified": "2025-08-12",
+  "datePublished": "2025-08-12"
 }
 
   </script><script>

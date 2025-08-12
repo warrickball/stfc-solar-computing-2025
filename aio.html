@@ -368,7 +368,7 @@
         
 <section id="aio-basics"><p>Content from <a href="basics.html">Python basics</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -464,7 +464,8 @@ mixture of types (including more lists).</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">4</span></span></code></pre>
 </div>
-<p>Python indexes start from zero and don’t include the upper bound.</p>
+<p>Python indexes start from zero. This is the same as C &amp; C++ but
+different from Fortran’s default behaviour, MATLAB and R.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -479,14 +480,14 @@ mixture of types (including more lists).</p>
 <ul>
 <li>when you’re 25 years old, you’re in the 26th year of your life;
 and</li>
-<li>09:… on a clock means we’re in the 10th hour.</li>
+<li>09:23 on a clock means we’re in the 10th hour.</li>
 </ul>
-<p>Supposedly comes from the fact that the variable name points to the
-start of the item and the index gives the relevant offset in memory. So
-element <code>[0]</code> means no offset and therefore the first element
-in the list.</p>
-<p>You might be compelled by the <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html" class="external-link">arguments
-by Edsger Dijkstra</a>.</p>
+<p>This roughly comes from the fact that the variable name points to the
+start of the item and the index gives the relevant offset in memory,
+though its arguably <a href="https://exple.tive.org/blarg/2013/10/22/citation-needed/" class="external-link">a bit
+more complicated</a>. In this interpretation, element <code>[0]</code>
+means no offset and therefore the “first” element in the list in the
+typical sense.</p>
 <p>We can count backwards from the end with negative indices.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -500,11 +501,24 @@ by Edsger Dijkstra</a>.</p>
 </div>
 <p>which is conveniently the same as <code>len(my_list)-1</code>.</p>
 <p>We can use special indices called <em>slices</em>, with syntax
-<code>start:stop:step</code>.</p>
+<code>start:stop:step</code>. Note that the slice does <em>not</em>
+include the upper bound. The <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html" class="external-link">arguments
+by Edsger Dijkstra</a> might convince you about why it makes sense
+<em>not</em> to include the upper bound.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(my_list[<span class="dv">1</span>:<span class="dv">4</span>:<span class="dv">2</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(my_list[:<span class="dv">2</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[0, 'a']</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">print</span>(my_list[<span class="dv">1</span>:<span class="dv">4</span>:<span class="dv">2</span>])</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -541,13 +555,13 @@ expressions will produce before running them.</p>
 <div class="callout-content">
 <p>What is the output of the following sequence of Python
 statements?</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>b <span class="op">=</span> a</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>a.append(<span class="dv">15</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>a.append(<span class="dv">15</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre>
 </div>
 </div>
 </div>
@@ -588,11 +602,11 @@ functions.</p>
 <p>Dictionaries are the other main kind of collection. They’re like
 lists but we declare them with <code>{...}</code> and access elements
 using <em>keys</em> rather than indices.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>my_dict <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">0</span>, <span class="st">'b'</span>: <span class="fl">1.0</span>}</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="bu">print</span>(my_dict[<span class="st">'a'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_dict <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">0</span>, <span class="st">'b'</span>: <span class="fl">1.0</span>}</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="bu">print</span>(my_dict[<span class="st">'a'</span>])</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -611,10 +625,10 @@ takes some arguments (or sometimes none!) and returns a value.</p>
 <code>print('hello')</code>.</p>
 <p>There are also <em>keyword</em> arguments that have a default value.
 e.g.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hello'</span>, end<span class="op">=</span><span class="st">' ...'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hello'</span>, end<span class="op">=</span><span class="st">' ...'</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -626,11 +640,11 @@ tools offer more (e.g. <code>print?</code> in IPython) and most
 documentation is rendered online (more on this later).</p>
 <p>Functions always return a value but if it’s nothing explicit it’s
 just <code>None</code>.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">print</span>(<span class="st">"what's x?"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">print</span>(<span class="st">"what's x?"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -641,12 +655,12 @@ None</code></pre>
 <p>Some functions are attached to objects, in which case they’re
 sometimes called <em>methods</em>, and they can modify (mutable) objects
 in place.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>x <span class="op">=</span> my_list.append(<span class="dv">25</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="bu">print</span>(x)</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="bu">print</span>(my_list)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>x <span class="op">=</span> my_list.append(<span class="dv">25</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="bu">print</span>(x)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="bu">print</span>(my_list)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -682,7 +696,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-ecosystem"><p>Content from <a href="ecosystem.html">The Python ecosystem</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/ecosystem.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -773,7 +787,7 @@ contributions incorporated.</p>
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Navigate to PyPI and search for packages using some keywords of your
-choice (e.g. “solar physics”. What projects turn up? Do any look
+choice (e.g. “solar physics”). What projects turn up? Do any look
 interesting? Are they maintained?</p>
 </div>
 </div>
@@ -1039,7 +1053,7 @@ finite differences and compare those to the analytic derivative.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can estimate the derivative with forward (or backward, which is
 similar) differences,</p>
@@ -1064,7 +1078,7 @@ differences,</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="bu">print</span>(dy_dx<span class="op">-</span>np.cos(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="bu">print</span>(dy_dx <span class="op">-</span> np.cos(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre>
 </div>
 <pre><code>[-6.56545656e-04 -6.52656466e-04 -6.46191539e-04 -6.37176389e-04
  -6.25646595e-04 -6.11647660e-04 -5.95234830e-04 -5.76472881e-04
@@ -1108,7 +1122,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-data"><p>Content from <a href="data.html">Exploring the WSA Enlil data</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1293,7 +1307,7 @@ WSA-Enlil dashboard.</p>
 <ol style="list-style-type: decimal">
 <li><p>You can see the values with
 <code>print(ds['STEREO_A_V1'])</code>. They should mostly be between
-about 200,000 and 800,000.</p></li>
+about 300,000 and 700,000.</p></li>
 <li><p><code>x</code>, <code>y</code> and <code>z</code> correspond to
 the radial distance from the Sun <span class="math inline">\(r\)</span>,
 a heliocentric latitude <span class="math inline">\(\theta\)</span> and
@@ -1317,12 +1331,12 @@ km/s, so the data is presumably in m/s.</p></li>
 <p>The units of the density variables is much more difficult to infer,
 so to save some time I’ll just tell you what it is. Part of this is
 based on a difficult to find <a href="https://www.ngdc.noaa.gov/stp/enlil/data_note.html" class="external-link">data note</a>
-that links to a plotting script writting in the [Interactive Data
-Language](<a href="https://en.wikipedia.org/wiki/IDL_(programming_language)" class="external-link uri">https://en.wikipedia.org/wiki/IDL_(programming_language)</a>
-(IDL), which I used to get some of this information.</p>
-<p>In short, the density in the data files is a <em>mass</em> (rather
-than <em>number</em>) density in kg/m³. The plots are of <em>number</em>
-density in 1/cm³ and mass is converted to number by dividing my the mass
+that links to a plotting script written in the <a href="https://en.wikipedia.org/wiki/IDL_(programming_language)" class="external-link">Interactive
+Data Language</a> (IDL), which I used to get some of this
+information.</p>
+<p>The density in the data files is a <em>mass</em> (rather than
+<em>number</em>) density in kg/m³. The plots are of <em>number</em>
+density in 1/cm³ and mass is converted to number by dividing by the mass
 of a proton. So, for example, the number density at Earth is</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1392,8 +1406,8 @@ array([[[-3.15502734e+24, -3.54123933e+24, -3.84827011e+24, ...,
          -2.11272021e+27, -2.11388221e+27, -2.11433408e+27]]],
       dtype=float32)
 Dimensions without coordinates: x, t, z</code></pre>
-<p>so we don’t have to do as much manual broadcasting trickery if the
-coordinates are well defined.</p>
+<p>so we don’t have to do as much manual broadcasting if the coordinates
+are well defined.</p>
 <p>We can select axis by axis using NumPy syntax or we can select axes
 explicitly with <code>Dataset.isel</code>.</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -1449,7 +1463,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-plot-1d"><p>Content from <a href="plot-1d.html">Line plots with Matplotlib</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/plot-1d.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1538,7 +1552,7 @@ numbers. As a simple start with our data, we could plot:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>plt.plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>plt.plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
 </div>
 <p>where I’ve borrowed the units from an IDL script I found.</p>
 <div id="discussion1" class="callout discussion">
@@ -1566,7 +1580,7 @@ at Earth and the radial velocity at STEREO A.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>time <span class="op">=</span> ds[<span class="st">'Earth_TIME'</span>]<span class="op">/</span><span class="fl">86400.0</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_Density'</span>]<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>plt.plot(time, ds[Earth_V1]<span class="op">/</span><span class="dv">1000</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_V1]/1000)</span></span></code></pre>
 </div>
@@ -1605,7 +1619,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-plot-2d"><p>Content from <a href="plot-2d.html">2D plots with Matplotlib</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/plot-2d.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1746,16 +1760,17 @@ density units correctly.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>fig, ax <span class="op">=</span> pl.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>lower <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].attrs[<span class="st">'dd13_min'</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>upper <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].attrs[<span class="st">'dd13_max'</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>data <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].isel(t<span class="op">=</span><span class="dv">0</span>).astype(<span class="bu">float</span>).astype(<span class="bu">float</span>)  <span class="co"># otherwise max-min overflows</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>density <span class="op">=</span> (data <span class="op">-</span> data.<span class="bu">min</span>())<span class="op">/</span>(data.<span class="bu">max</span>() <span class="op">-</span> data.<span class="bu">min</span>())<span class="op">*</span>(upper<span class="op">-</span>lower) <span class="op">+</span> lower</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>density <span class="op">=</span> density<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>r <span class="op">=</span> ds[<span class="st">'x_coord'</span>]<span class="op">/</span><span class="fl">1.49e11</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>phi <span class="op">=</span> ds[<span class="st">'z_coord'</span>]</span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>cm <span class="op">=</span> ax.pcolormesh(phi, r, r<span class="op">**</span><span class="dv">2</span><span class="op">*</span>density, cmap<span class="op">=</span><span class="st">'jet'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="fl">22.5</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>plt.colorbar(cm)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>proton_mass <span class="op">=</span> <span class="fl">1.6726e-27</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>lower <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].attrs[<span class="st">'dd13_min'</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>upper <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].attrs[<span class="st">'dd13_max'</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>data <span class="op">=</span> ds[<span class="st">'dd13_3d'</span>].isel(t<span class="op">=</span><span class="dv">0</span>).astype(<span class="bu">float</span>).astype(<span class="bu">float</span>)  <span class="co"># otherwise max-min overflows</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>density <span class="op">=</span> (data <span class="op">-</span> data.<span class="bu">min</span>())<span class="op">/</span>(data.<span class="bu">max</span>() <span class="op">-</span> data.<span class="bu">min</span>())<span class="op">*</span>(upper<span class="op">-</span>lower) <span class="op">+</span> lower</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>density <span class="op">=</span> density<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>r <span class="op">=</span> ds[<span class="st">'x_coord'</span>]<span class="op">/</span><span class="fl">1.49e11</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>phi <span class="op">=</span> ds[<span class="st">'z_coord'</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>cm <span class="op">=</span> ax.pcolormesh(phi, r, r<span class="op">**</span><span class="dv">2</span><span class="op">*</span>density, cmap<span class="op">=</span><span class="st">'jet'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="fl">22.5</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>plt.colorbar(cm)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1781,7 +1796,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-mosaic"><p>Content from <a href="mosaic.html">Putting it all together with subplot_mosaic</a></p>
 <hr>
-<p>Last updated on 2025-08-08 |
+<p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/mosaic.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1863,7 +1878,7 @@ some, but not all, of the plots.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>There are multiple solutions here but I would use</li>
@@ -1889,7 +1904,7 @@ some, but not all, of the plots.</p></li>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>axs[<span class="st">'E'</span>].plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal">
-<li>You’ll probably need to <code>per_subplot_kw</code> argument:</li>
+<li>I used the <code>per_subplot_kw</code> argument:</li>
 </ol>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1993,8 +2008,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/aio.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/aio.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-08",
-  "datePublished": "2025-08-08"
+  "dateModified": "2025-08-12",
+  "datePublished": "2025-08-12"
 }
 
   </script><script>

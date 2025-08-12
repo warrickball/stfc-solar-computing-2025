@@ -329,7 +329,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Line plots with Matplotlib</h1>
-        <p>Last updated on 2025-08-08 |
+        <p>Last updated on 2025-08-12 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/plot-1d.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -416,7 +416,7 @@ numbers. As a simple start with our data, we could plot:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>plt.plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>plt.plot(ds[<span class="st">'Earth_TIME'</span>], ds[<span class="st">'Earth_Density'</span>]<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span>)</span></code></pre>
 </div>
 <p>where I’ve borrowed the units from an IDL script I found.</p>
 <div id="discussion1" class="callout discussion">
@@ -444,7 +444,7 @@ at Earth and the radial velocity at STEREO A.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>time <span class="op">=</span> ds[<span class="st">'Earth_TIME'</span>]<span class="op">/</span><span class="fl">86400.0</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_Density'</span>]<span class="op">/</span><span class="fl">1.672e-27</span><span class="op">/</span><span class="fl">1e6</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_Density'</span>]<span class="op">/</span>proton_mass<span class="op">/</span><span class="fl">1e6</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>plt.plot(time, ds[Earth_V1]<span class="op">/</span><span class="dv">1000</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>plt.plot(time, ds[<span class="st">'STEREO_A_V1]/1000)</span></span></code></pre>
 </div>
@@ -535,8 +535,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/plot-1d.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/plot-1d.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-08",
-  "datePublished": "2025-08-08"
+  "dateModified": "2025-08-12",
+  "datePublished": "2025-08-12"
 }
 
   </script><script>
