@@ -73,7 +73,8 @@ print(len(my_list))
 4
 ```
 
-Python indexes start from zero and don't include the upper bound.
+Python indexes start from zero.
+This is the same as C & C++ but different from Fortran's default behaviour, MATLAB and R.
 
 ```python
 print(my_list[0])
@@ -86,13 +87,11 @@ print(my_list[0])
 I think of this like many of the ways we index time. E.g.
 
 - when you're 25 years old, you're in the 26th year of your life; and
-- 09:... on a clock means we're in the 10th hour.
+- 09:23 on a clock means we're in the 10th hour.
 
-Supposedly comes from the fact that the variable name points to the start of the item
-and the index gives the relevant offset in memory.  So element `[0]` means no offset
-and therefore the first element in the list.
-
-You might be compelled by the [arguments by Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html).
+This roughly comes from the fact that the variable name points to the start of the item and the index gives the relevant offset in memory,
+though its arguably [a bit more complicated](https://exple.tive.org/blarg/2013/10/22/citation-needed/).
+In this interpretation, element `[0]` means no offset and therefore the "first" element in the list in the typical sense.
 
 We can count backwards from the end with negative indices.
 
@@ -107,6 +106,16 @@ print(my_list[-1])
 which is conveniently the same as `len(my_list)-1`.
 
 We can use special indices called *slices*, with syntax `start:stop:step`.
+Note that the slice does *not* include the upper bound.
+The [arguments by Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html) might convince you about why it makes sense *not* to include the upper bound.
+
+```python
+print(my_list[:2])
+```
+
+```output
+[0, 'a']
+```
 
 ```python
 print(my_list[1:4:2])

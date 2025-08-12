@@ -66,8 +66,7 @@ being responded to or contributions incorporated.
 
 :::::::::::::::::::::::::::::::::::::::: challenge
 
-Navigate to PyPI and search for packages using some keywords of your choice
-(e.g. "solar physics".
+Navigate to PyPI and search for packages using some keywords of your choice (e.g. "solar physics").
 What projects turn up?
 Do any look interesting?
 Are they maintained?
@@ -290,10 +289,10 @@ x = np.linspace(0, 2*np.pi, 101)
 y = np.sin(x)
 dy_dx = (y[2:]-y[:-2])/(x[2:]-x[:-2])
 ```
-Taking care to compare the appropriate indices, we can try comparing the appropriate values. 
+Taking care to compare the appropriate indices, we can try comparing the appropriate values.
 E.g., for the fractional error in central differences,
 ```python
-print(dy_dx-np.cos(x[1:-1]))
+print(dy_dx - np.cos(x[1:-1]))
 ```
 ```
 [-6.56545656e-04 -6.52656466e-04 -6.46191539e-04 -6.37176389e-04
