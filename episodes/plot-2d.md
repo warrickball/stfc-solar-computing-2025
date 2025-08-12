@@ -94,7 +94,8 @@ and remember to convert the mass density array by using the attributes.
 Here's a fairly complete solution I used to check I'd understood the density units correctly.
 
 ```python
-fig, ax = pl.subplots(subplot_kw={'projection': 'polar'})
+proton_mass = 1.6726e-27
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
 lower = ds['dd13_3d'].attrs['dd13_min']
 upper = ds['dd13_3d'].attrs['dd13_max']
 data = ds['dd13_3d'].isel(t=0).astype(float).astype(float)  # otherwise max-min overflows

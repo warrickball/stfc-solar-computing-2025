@@ -145,7 +145,7 @@ and by comparing with the actual SWPC WSA-Enlil dashboard.
 ::::::::::::::::::::::::::::::::::::::::: solution
 
 1. You can see the values with `print(ds['STEREO_A_V1'])`.
-   They should mostly be between about 200,000 and 800,000.
+   They should mostly be between about 300,000 and 700,000.
 
 2. `x`, `y` and `z` correspond to the radial distance from the Sun $r$,
    a heliocentric latitude $\theta$ and
@@ -165,10 +165,10 @@ and by comparing with the actual SWPC WSA-Enlil dashboard.
 The units of the density variables is much more difficult to infer,
 so to save some time I'll just tell you what it is.
 Part of this is based on a difficult to find [data note](https://www.ngdc.noaa.gov/stp/enlil/data_note.html)
-that links to a plotting script writting in the [Interactive Data Language](https://en.wikipedia.org/wiki/IDL_(programming_language) (IDL), which I used to get some of this information.
+that links to a plotting script written in the [Interactive Data Language](https://en.wikipedia.org/wiki/IDL_(programming_language)) (IDL), which I used to get some of this information.
 
-In short, the density in the data files is a *mass* (rather than *number*) density in kg/m³.
-The plots are of *number* density in 1/cm³ and mass is converted to number by dividing my the mass of a proton.
+The density in the data files is a *mass* (rather than *number*) density in kg/m³.
+The plots are of *number* density in 1/cm³ and mass is converted to number by dividing by the mass of a proton.
 So, for example, the number density at Earth is
 ```python
 proton_mass = 1.6726e-27
@@ -233,11 +233,9 @@ array([[[-3.15502734e+24, -3.54123933e+24, -3.84827011e+24, ...,
       dtype=float32)
 Dimensions without coordinates: x, t, z
 ```
-so we don't have to do as much manual broadcasting trickery
-if the coordinates are well defined.
+so we don't have to do as much manual broadcasting if the coordinates are well defined.
 
-We can select axis by axis using NumPy syntax
-or we can select axes explicitly with `Dataset.isel`.
+We can select axis by axis using NumPy syntax or we can select axes explicitly with `Dataset.isel`.
 ```python
 print(ds['dd13_3d'][0])
 print(ds['dd13_3d'].isel(t=0))

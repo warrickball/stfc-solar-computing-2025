@@ -73,7 +73,7 @@ fig, axs = plt.subplot_mosaic(
 axs['E'].plot(ds['Earth_TIME'], ds['Earth_Density']/1.672e-27/1e6)
 ```
 
-3. You'll probably need to `per_subplot_kw` argument:
+3. I used the `per_subplot_kw` argument:
 ```python
 fig, axs = plt.subplot_mosaic(
     # ...

@@ -64,7 +64,7 @@ Either API will usually work with iterable things that contain numbers.
 As a simple start with our data, we could plot:
 
 ```python
-plt.plot(ds['Earth_TIME'], ds['Earth_Density']/1.672e-27/1e6)
+plt.plot(ds['Earth_TIME'], ds['Earth_Density']/proton_mass/1e6)
 ```
 
 where I've borrowed the units from an IDL script I found.
@@ -82,7 +82,7 @@ and the radial velocity at STEREO A.
 For example,
 ```python
 time = ds['Earth_TIME']/86400.0
-plt.plot(time, ds['STEREO_A_Density']/1.672e-27/1e6)
+plt.plot(time, ds['STEREO_A_Density']/proton_mass/1e6)
 plt.plot(time, ds[Earth_V1]/1000)
 plt.plot(time, ds['STEREO_A_V1]/1000)
 ```
