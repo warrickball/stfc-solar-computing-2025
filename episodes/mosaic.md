@@ -1,5 +1,5 @@
 ---
-title: "Putting it all together with `subplot_mosaic`"
+title: "Putting it all together with subplots"
 teaching: 10
 exercises: 5
 ---
