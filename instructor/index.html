@@ -255,7 +255,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="mosaic.html">6. Putting it all together with <code>subplot_mosaic</code></a>
+        <a href="mosaic.html">6. Putting it all together with subplots</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -390,8 +390,7 @@ How do I plot 2D datasets with Matplotlib?
 <span class="visually-hidden">Duration: </span>01h 30m
 </td>
 <td>
- 6. <a href="mosaic.html">Putting it all together with
-<code>subplot_mosaic</code></a>
+ 6. <a href="mosaic.html">Putting it all together with subplots</a>
 </td>
 <td>
 How do I work out how to use Python packages and modules?<br>How should
@@ -411,78 +410,44 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><!-- FIXME: Setup instructions live in this document. Please specify the tools and --><!-- the data sets the Learner needs to have installed. --><section><h2 class="section-heading" id="data-sets">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a></h2>
+      </section><section id="setup"><section><h2 class="section-heading" id="data-sets">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a></h2>
 <hr class="half-width"><p>SWPC provides the latest WSA-Enlil snapshot in <a href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/wsa_enlil/prod/" class="external-link">this
 remote folder</a>, linked from the “Data” tab of the dashboard. Go to
 that folder, click on the oldest date, and download the file with a name
 that ends <code>.suball.nc</code>. It should be about 130MB in size.</p>
 </section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><div id="details" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details</h3>
-<div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>spoiler</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Windows
-  </h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
-<div class="accordion-body">
-<p>Use PuTTY</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  MacOS
-  </h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
-<div class="accordion-body">
-<p>Use Terminal.app</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Linux
-  </h3>
-</button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
-<div class="accordion-body">
-<p>Use Terminal</p>
-</div>
-</div>
-</div>
-</div>
-<!--
+<hr class="half-width"><p>The course material presumes you’ll use <a href="https://jupyter.org/" class="external-link">JupyterLab</a>. You may wish to edit and run
+your code in another way that you’re familiar with (e.g. an
+<em>integrated development environment</em>, IDE) but the instructors
+might not be able to help with questions specific to the software you’re
+using.</p>
+<p>If you already have Python installed, you can probably use that. (If
+your operating system is Linux, you almost certainly already have Python
+installed.) You might need to <a href="https://jupyter.org/install" class="external-link">install JupyterLab</a> and some other
+Python packages but we’ll point to these along the way.</p>
+<p>If you don’t have a Python distribution installed, we recommend <a href="https://conda-forge.org/download/" class="external-link">Miniforge</a>. The best-tested
+method here is to follow the <a href="https://carpentries.github.io/workshop-template/#python-1" class="external-link">instructions
+in the main Carpentries course</a> for your operating system. Ask an
+instructor if you have a problem.</p>
+<p>If you’re specifically using one of the University of Birmingham lab
+computers, then you should be able to install Miniforge by using
+AppsAnywhere as follows:</p>
+<ol style="list-style-type: decimal"><li>Open <a href="https://apps.bham.ac.uk" class="external-link">AppsAnywhere</a> from the
+Windows Desktop.</li>
+<li>Login to your University of Birmingham Microsoft account when
+prompted.</li>
+<li>Allow the browser to open the AppsAnywhere browser.</li>
+<li>In the search bar, search for “miniforge”, which should bring up
+something like “Miniforge Python 24.3.0-0 with All school addons”.</li>
+<li>Select “Launch” next to Miniforge or on its description page.</li>
+<li>When ready, launch Miniforge by pressing the Launch icon or
+double-clicking.</li>
+<li>This brings up a file folder, where you should double-click on
+“Jupyter Lab (Network drive)”.</li>
+</ol><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+ --></section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/basics.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
@@ -531,8 +496,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/index.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/instructor/index.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-12",
-  "datePublished": "2025-08-12"
+  "dateModified": "2025-08-15",
+  "datePublished": "2025-08-15"
 }
 
   </script><script>
