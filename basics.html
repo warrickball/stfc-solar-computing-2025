@@ -330,7 +330,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Python basics</h1>
-        <p>Last updated on 2025-08-12 |
+        <p>Last updated on 2025-08-28 |
 
         <a href="https://github.com/warrickball/stfc-solar-computing-2025/edit/main/episodes/basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -420,7 +420,7 @@ mixture of types (including more lists).</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">4</span></span></code></pre>
 </div>
-<p>Python indexes start from zero. This is the same as C &amp; C++ but
+<p>Python indices start from zero. This is the same as C and C++ but
 different from Fortran’s default behaviour, MATLAB and R.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -438,7 +438,7 @@ and</li>
 <li>09:23 on a clock means we’re in the 10th hour.</li>
 </ul><p>This roughly comes from the fact that the variable name points to the
 start of the item and the index gives the relevant offset in memory,
-though its arguably <a href="https://exple.tive.org/blarg/2013/10/22/citation-needed/" class="external-link">a bit
+though it’s arguably <a href="https://exple.tive.org/blarg/2013/10/22/citation-needed/" class="external-link">a bit
 more complicated</a>. In this interpretation, element <code>[0]</code>
 means no offset and therefore the “first” element in the list in the
 typical sense.</p>
@@ -456,9 +456,20 @@ typical sense.</p>
 <p>which is conveniently the same as <code>len(my_list)-1</code>.</p>
 <p>We can use special indices called <em>slices</em>, with syntax
 <code>start:stop:step</code>. Note that the slice does <em>not</em>
-include the upper bound. The <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html" class="external-link">arguments
+include the upper bound.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>The <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html" class="external-link">arguments
 by Edsger Dijkstra</a> might convince you about why it makes sense
 <em>not</em> to include the upper bound.</p>
+</div>
+</div>
+</div>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -479,8 +490,8 @@ by Edsger Dijkstra</a> might convince you about why it makes sense
 </h3>
 <pre class="output" tabindex="0"><code>[0, True]</code></pre>
 </div>
-<p><code>start</code> defaults to 0, <code>stop</code> to the length of
-the list, and <code>step</code> to 1.</p>
+<p>In effect, <code>start</code> defaults to 0, <code>stop</code> to the
+length of the list, and <code>step</code> to 1.</p>
 <div id="discussion1" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -523,14 +534,14 @@ statements?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>[0, 5, 10, 15]</p>
 </div>
 </div>
 </div>
 </div>
-<div id="callout1" class="callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
@@ -583,8 +594,8 @@ e.g.</p>
 </h3>
 <pre class="output" tabindex="0"><code>hello ...</code></pre>
 </div>
-<p>Simplest way to get help is <code>help</code> function but most GUI
-tools offer more (e.g. <code>print?</code> in IPython) and most
+<p>The simplest way to get help is <code>help</code> function but most
+GUI tools offer more (e.g. <code>print?</code> in IPython) and most
 documentation is rendered online (more on this later).</p>
 <p>Functions always return a value but if it’s nothing explicit it’s
 just <code>None</code>.</p>
@@ -698,8 +709,8 @@ any links that you are not going to use.
   "url": "https://warrickball.github.io/stfc-solar-computing-2025/basics.html",
   "identifier": "https://warrickball.github.io/stfc-solar-computing-2025/basics.html",
   "dateCreated": "2025-07-16",
-  "dateModified": "2025-08-12",
-  "datePublished": "2025-08-15"
+  "dateModified": "2025-08-28",
+  "datePublished": "2025-08-28"
 }
 
   </script><script>
