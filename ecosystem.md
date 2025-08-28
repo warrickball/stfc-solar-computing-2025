@@ -73,6 +73,22 @@ Are they maintained?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+In a Jupyter Notebook, you can install a Python package by running a cell with e.g.
+
+```
+!pip install xarray
+```
+
+where `xarray` is the name of a package we will use later and isn't included in the Miniforge distribution.
+After the install finishes, you'll need to restart your JupyterLab kernel.
+
+:::::::::::::::::::::::::::::::::::::::::: callout
+
+The Miniforge Python distribution includes NumPy, SciPy and Matplotlib
+but you might need to install them manually if you're using a different Python distribution.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## The scientific stack
 
 Over many years, a core set of widely-used and well-maintained libraries for scientific computing has been established.

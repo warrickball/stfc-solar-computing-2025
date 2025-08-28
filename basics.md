@@ -73,8 +73,8 @@ print(len(my_list))
 4
 ```
 
-Python indexes start from zero.
-This is the same as C & C++ but different from Fortran's default behaviour, MATLAB and R.
+Python indices start from zero.
+This is the same as C and C++ but different from Fortran's default behaviour, MATLAB and R.
 
 ```python
 print(my_list[0])
@@ -90,7 +90,7 @@ I think of this like many of the ways we index time. E.g.
 - 09:23 on a clock means we're in the 10th hour.
 
 This roughly comes from the fact that the variable name points to the start of the item and the index gives the relevant offset in memory,
-though its arguably [a bit more complicated](https://exple.tive.org/blarg/2013/10/22/citation-needed/).
+though it's arguably [a bit more complicated](https://exple.tive.org/blarg/2013/10/22/citation-needed/).
 In this interpretation, element `[0]` means no offset and therefore the "first" element in the list in the typical sense.
 
 We can count backwards from the end with negative indices.
@@ -107,7 +107,13 @@ which is conveniently the same as `len(my_list)-1`.
 
 We can use special indices called *slices*, with syntax `start:stop:step`.
 Note that the slice does *not* include the upper bound.
+
+
+:::::::::::::::::::::::::::::::::::::::::: callout
+
 The [arguments by Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD831.html) might convince you about why it makes sense *not* to include the upper bound.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
 print(my_list[:2])
@@ -125,7 +131,7 @@ print(my_list[1:4:2])
 [0, True]
 ```
 
-`start` defaults to 0, `stop` to the length of the list, and `step` to 1.
+In effect, `start` defaults to 0, `stop` to the length of the list, and `step` to 1.
 
 :::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -206,7 +212,7 @@ print('hello', end=' ...')
 hello ...
 ```
 
-Simplest way to get help is `help` function but most GUI tools offer more (e.g. `print?` in IPython)
+The simplest way to get help is `help` function but most GUI tools offer more (e.g. `print?` in IPython)
 and most documentation is rendered online (more on this later).
 
 Functions always return a value but if it's nothing explicit it's just `None`.

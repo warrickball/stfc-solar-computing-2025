@@ -14,15 +14,22 @@ The course material presumes you'll use [JupyterLab](https://jupyter.org/).
 You may wish to edit and run your code in another way that you're familiar with (e.g. an *integrated development environment*, IDE)
 but the instructors might not be able to help with questions specific to the software you're using.
 
-If you already have Python installed, you can probably use that.
-(If your operating system is Linux, you almost certainly already have Python installed.)
+If you're using one of the lab computers in the course venue (the Design Centre in the School of Engineering),
+then JupyterLab should already be installed as part of the [Miniforge](https://conda-forge.org/download/) distribution.
+Just run "JupyterLab (Network Drive)" from the Start menu.
+If you're using a guest account, you might end up on the C drive by default,
+in which case you should navigate to `Users\<username>` in the left sidebar before trying to create a Jupyter Notebook.
+
+If you already have Python installed on your own system, you can probably use that.
+If your operating system is Linux, you almost certainly already have Python installed.
 You might need to [install JupyterLab](https://jupyter.org/install) and some other Python packages but we'll point to these along the way.
 
 If you don't have a Python distribution installed, we recommend [Miniforge](https://conda-forge.org/download/).
 The best-tested method here is to follow the [instructions in the main Carpentries course](https://carpentries.github.io/workshop-template/#python-1) for your operating system.
 Ask an instructor if you have a problem.
 
-If you're specifically using one of the University of Birmingham lab computers, then you should be able to install Miniforge by using AppsAnywhere as follows:
+If you're specifically using a University of Birmingham lab computers elsewhere on campus,
+then you should be able to install Miniforge by using AppsAnywhere as follows:
 
 1. Open [AppsAnywhere](https://apps.bham.ac.uk) from the Windows Desktop.
 2. Login to your University of Birmingham Microsoft account when prompted.
