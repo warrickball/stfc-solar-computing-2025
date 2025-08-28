@@ -84,7 +84,7 @@ More are available through other libraries, like [Cartopy](https://scitools.org.
 :::::::::::::::::::::::::::::::::::::::: challenge
 
 Make the appropriate plot for the plasma density.
-Note that the SWPC dashboard actually has a 2D plot of the number density times $(r/\mathrm{1 AU})^2$
+Note that the SWPC dashboard actually has a 2D plot of the number density times $(r/\mathrm{1\,AU})^2$
 and remember to convert the mass density array by using the attributes.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
